@@ -1,9 +1,12 @@
-# TeamInternational
+# TeamInternational Test
 
 
-to run this application need to run the next commands
+to run this application need:
+* download https://github.com/MateoViilla/ApiEmployee.git https://github.com/MateoViilla/testTeamInternationalApp.git
 
-to run the api server 
+run the next commands:
+
+run the api server 
 
 *  /ApiEmployees node .
 
