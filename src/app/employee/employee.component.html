@@ -1,0 +1,98 @@
+<br>
+
+
+<br>
+<br>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="container">
+      <h4>{{title}}</h4>
+
+
+      <hr>
+      <form>
+        <div class="row">
+          <div class="col s7">
+
+            <div [formGroup]="employeeForm">
+              <div id="divName">
+                <label>Name :</label>
+                <input type="text" name="name" formControlName="name" class="form-control" value="{{employee.name}}" [(ngModel)]="employee.name"
+                  required>
+              </div>
+              <br>
+              <label>Dob :</label>
+              <input type="date" name="dod" formControlName="dod" class="form-control" [(ngModel)]="employee.dod" required>
+              <br>
+              <label for="country">Country: </label>
+              <br>
+              <mat-form-field>
+                <mat-select placeholder="Select your country" class="form-control" name="country" formControlName="country" [(ngModel)]="employee.country">
+                  <mat-option *ngFor="let country of countryService.countries" [value]="country.name">
+                    {{country.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <br>
+              <br>
+              <label>Username :</label>
+              <input type="text" name="userName" formControlName="userName" class="form-control" [(ngModel)]="employee.userName" required>
+              <br>
+              <label>Hire date :</label>
+              <input type="date" name="hireDate" formControlName="hireDate" class="form-control" [(ngModel)]="employee.hireDate" required>
+              <br>
+
+              <mat-slide-toggle name="status" formControlName="status" value="employee.status" [(ngModel)]="employee.status"></mat-slide-toggle>
+            </div>
+
+          </div>
+          <div class="col s7">
+            <div [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+              <h6>Area</h6>
+
+              <mat-button-toggle-group formControlName="area" name="fontStyle" aria-label="Font Style" value="employee.jobTitle">
+                <mat-button-toggle value="bold" (click)="setArea('Services')">Services</mat-button-toggle>
+                <mat-button-toggle value="italic" (click)="setArea('Kitchen')">Kitchen</mat-button-toggle>
+              </mat-button-toggle-group>
+
+              <br>
+              <h6>JobTitle</h6>
+
+
+              <div>
+                <mat-form-field>
+                  <mat-select name="jobTitle" formControlName="jobTitle" class="form-control" value="employee.jobTitle" [(ngModel)]="employee.jobTitle">
+                    <mat-option *ngFor="let job of jobs" [value]="job.title" (click)="enableTip()">
+                      {{job.title}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <br>
+              <label>Tip rate: %</label>
+              <input type="number" name="tipRote" formControlName="tipRote" class="form-control" value="employee.tipRote" [(ngModel)]="employee.tipRote"
+                [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" required>
+
+            </div>
+
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col">
+            <button mat-stroked-button class="material-icons" (click)="onBack()"> Back</button>
+          </div>
+          <div class="col">
+          <button mat-stroked-button class="material-icons" id="submitButton" (click)="onSubmit()">Save</button>
+          </div>
+
+        </div>  
+
+
+      </form>
+    </div>
+  </div>
+
+</div>

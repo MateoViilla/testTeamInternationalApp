@@ -1,0 +1,37 @@
+<div class="col s7">
+  <table class="responsive-table highlight">
+    
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>User name </th>
+          <th>Hire date</th>
+        </tr>
+      </thead>
+      <tr *ngFor="let emp of employeeService.employees">
+        <td>{{emp.name}} <br>
+          {{emp.jobTitle}}
+        </td>
+        <td>{{calculateAge(emp.dod)}}</td>
+        <td>{{emp.userName}}</td>
+        <td>{{emp.hireDate}}</td> 
+        <td>
+            <a class="action-btn" (click)="onEdit(emp)">
+              <i class="material-icons">edit</i>
+            </a>
+            <a class="action-btn" (click)="onDelete(emp._id)">
+              <i class="material-icons">delete</i>
+            </a>
+            <a class="action-btn" (click)="onView(emp._id)" >
+              <i class="material-icons">visibility</i>
+            </a>
+          </td>
+      </tr>
+    </table>
+
+    <div class="input-field col s12">
+      <button class="btn btn-custom right" type="button" (click)="onSave()">+ Add new employee</button>
+      </div>
+
+</div>
